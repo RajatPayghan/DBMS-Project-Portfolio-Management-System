@@ -18,6 +18,7 @@ CREATE TABLE user (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
+
 --
 -- Table structure for table `invests_in`
 --
@@ -28,7 +29,6 @@ CREATE TABLE invests_in (
   quantity BIGINT NOT NULL,
   entry_price DOUBLE(10,2),
   PRIMARY KEY  (user_id,symbol),
-  KEY idx_fk_film_id (`film_id`),
-  CONSTRAINT fk_film_actor_actor FOREIGN KEY (actor_id) REFERENCES actor (actor_id) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT fk_film_actor_film FOREIGN KEY (film_id) REFERENCES film (film_id) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT ui_user_investment_user FOREIGN KEY (user_id) REFERENCES user (user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT ui_user_investment_invest FOREIGN KEY (symbol) REFERENCES investment (symbol) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
