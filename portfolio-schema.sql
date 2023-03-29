@@ -3,7 +3,7 @@ CREATE SCHEMA portfolio;
 USE portfolio;
 
 --
--- Table structure for table `actor`
+-- Table structure for table `user`
 --
 
 CREATE TABLE user (
@@ -15,5 +15,20 @@ CREATE TABLE user (
   phone_number BIGINT UNSIGNED,
   pan_number BIGINT UNSIGNED,
   PRIMARY KEY  (user_id),
-  KEY idx_actor_last_name (last_name)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+--
+-- Table structure for table `invests_in`
+--
+
+CREATE TABLE invests_in (
+  user_id SMALLINT UNSIGNED NOT NULL,
+  symbol VARCHAR(10) NOT NULL,
+  quantity BIGINT NOT NULL,
+  entry_price DOUBLE(10,2),
+  PRIMARY KEY  (user_id,symbol),
+  KEY idx_fk_film_id (`film_id`),
+  CONSTRAINT fk_film_actor_actor FOREIGN KEY (actor_id) REFERENCES actor (actor_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT fk_film_actor_film FOREIGN KEY (film_id) REFERENCES film (film_id) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
