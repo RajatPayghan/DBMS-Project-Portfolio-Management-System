@@ -10,7 +10,8 @@
       "driver": "MySQL",
       "name": "PortfolioTest",
       "database": "portfolio",
-      "username": "root"
+      "username": "root",
+      "password": "ameya2002"
     }
   ]
 }
