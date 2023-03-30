@@ -3,7 +3,13 @@ This portfolio database management system is created by Rajat Payghan and Rudra 
 
 ## MySQL Relational Schema
 Link : https://drawsql.app/teams/dbs-4/diagrams/portfolio-management-system
-
+### Completed Tables
+Structure of portfolio
+- User
+- Investment
+- Market data
+- Performance
+- Relation : Invests In
 
 ## Current Queries
 - Can entry_price be NULL ?
