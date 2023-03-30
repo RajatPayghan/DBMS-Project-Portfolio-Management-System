@@ -2,15 +2,16 @@
   "sqltools.connections": [
     {
       "mysqlOptions": {
-        "authProtocol": "default"
+        "authProtocol": "xprotocol"
       },
       "previewLimit": 50,
       "server": "localhost",
-      "port": 3306,
+      "port": 33060,
+      "name": "MySQL",
       "driver": "MySQL",
-      "name": "PortfolioTest",
       "database": "portfolio",
       "username": "root",
+      "connectionTimeout": 15,
       "password": "ameya2002"
     }
   ]
