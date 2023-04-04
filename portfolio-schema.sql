@@ -86,13 +86,8 @@ CREATE TABLE financial_info( -- Running
 
 --@block COMMENT Procedures : 
 DELIMITER //
-CREATE PROCEDURE rewards_report (IN input_user_id BIGINT UNSIGNED)
-LANGUAGE SQL
-NOT DETERMINISTIC
-READS SQL DATA
-SQL SECURITY DEFINER
-COMMENT 'Provides a customizable report on best customers'
-proc: BEGIN
+CREATE PROCEDURE viewAllInvestments(IN input_user BIGINT UNSIGNED)
+BEGIN
   SELECT 
     invests_in.symbol AS Symbol,
     investment.name AS Symbol_Name,
@@ -102,6 +97,6 @@ proc: BEGIN
     invests_in.quantity*(investment.current_price-invests_in.entry_price) AS Invst_return
   FROM invests_in
   INNER JOIN investment USING (symbol)
-  WHERE invests_in.user_id = input_user_id;
+  WHERE invests_in.user_id = input_user;
 END //
 DELIMITER ;
