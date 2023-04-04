@@ -14,7 +14,7 @@ Structure of portfolio
 ## Current Work Distribution
 ### Rudra
 - Create a procedure function to delete, update and insert infromation into all tables
-- Loof for data to be added in tables
+- Look for data to be added in tables
 
 ### Rajat
 - Create a trigger for annual_return and total_return
