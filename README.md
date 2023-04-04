@@ -11,6 +11,11 @@ Structure of portfolio
 - Performance
 - Relation : Invests In
 
-## Current Queries
-- Can entry_price be NULL ?
-- Which attributes can we have as null in this database ?
+## Current Work Distribution
+### Rudra
+- Create a procedure function to delete, update and insert infromation into all tables
+
+### Rajat
+- Create a trigger for annual_return and total_return
+- Create a procedure to view all investments by a user_name
+
