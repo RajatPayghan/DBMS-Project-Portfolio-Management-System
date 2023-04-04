@@ -19,4 +19,5 @@ Structure of portfolio
 ### Rajat
 - Create a trigger for annual_return and total_return
 - Create a procedure to view all investments by a user_name
+- Create a Trigger to create a performance report once user is added
 
