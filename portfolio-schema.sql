@@ -3,7 +3,7 @@ CREATE SCHEMA portfolio;
 USE portfolio;
 
 
---@block COMMENT Table structure for User
+
 CREATE TABLE user ( -- Running
   user_id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   email VARCHAR(45) NOT NULL UNIQUE,
@@ -11,10 +11,10 @@ CREATE TABLE user ( -- Running
   first_name VARCHAR(45) NOT NULL,
   last_name VARCHAR(45),
   phone_number BIGINT UNSIGNED,
-  pan_number VARCHAR(10) NOT NULL
+  pan_number VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---@block COMMENT Table structure for Investment
+
 CREATE TABLE investment ( -- Running
   symbol VARCHAR(10) NOT NULL,
   name VARCHAR(45) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE investment ( -- Running
   PRIMARY KEY  (symbol)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---@block COMMENT Table structure for RELATION invests_in
+
 CREATE TABLE invests_in ( -- Running
   user_id BIGINT UNSIGNED NOT NULL,
   symbol VARCHAR(10) NOT NULL,
@@ -42,7 +42,7 @@ CREATE TABLE invests_in ( -- Running
     ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---@block COMMENT Table Structure for market_data
+
 CREATE TABLE market_data ( -- Running
   symbol VARCHAR(10) NOT NULL,
   on_date TIMESTAMP NOT NULL,
@@ -59,10 +59,10 @@ CREATE TABLE market_data ( -- Running
     ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---@block COMMENT table for Performance Metrics
+
 CREATE TABLE performance( -- Running
   user_id BIGINT UNSIGNED,
-  beta DOUBLE(5,2),
+  beta DOUBLE(5,2) DEFAULT 0,
   total_return DOUBLE(10,2) DEFAULT 0,
   annual_return DOUBLE(10,2) DEFAULT 0,
   risk DOUBLE(10,2),
@@ -74,7 +74,7 @@ CREATE TABLE performance( -- Running
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
---@block COMMENT Table structure for Financial Info
+
 CREATE TABLE financial_info( -- Running
   date_of_data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   interest DOUBLE(5,2),

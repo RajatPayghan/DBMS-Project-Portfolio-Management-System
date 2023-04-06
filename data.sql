@@ -1,1 +1,0 @@
-INSERT INTO user(email,passwrd,first_name,last_name,phone_number,pan_numberff) VALUES ()
