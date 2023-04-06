@@ -117,6 +117,7 @@ INSERT INTO `invests_in` VALUES
 (12,'nvpi',288,418.96,'1982-12-06 20:00:01',94.10),
 (11,'ogzz',188,66.61,'1983-05-12 19:41:32',34.68);
 
+UPDATE investment SET current_price=4*current_price;
 
 /*
 INSERT INTO `performance` VALUES 

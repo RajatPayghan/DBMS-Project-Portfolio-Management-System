@@ -90,8 +90,6 @@ BEGIN
 END //
 DELIMITER ;
 
-UPDATE investment SET current_price=current_price;
-
 -- Views
 
 DROP VIEW IF EXISTS viewAllReturns;
