@@ -1,3 +1,5 @@
+use portfolio;
+
 DELIMITER //
 DROP PROCEDURE IF EXISTS addUser;
 CREATE PROCEDURE addUser(
