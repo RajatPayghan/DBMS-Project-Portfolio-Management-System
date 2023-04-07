@@ -34,9 +34,8 @@ DELIMITER //
   END //
 DELIMITER ;
 
-
-DELIMITER //
-  DROP FUNCTION IF EXISTS totalReturn;
+DELIMITER $$
+  DROP FUNCTION IF EXISTS totalReturn; 
   CREATE FUNCTION totalReturn(input_user_id BIGINT UNSIGNED) returns DOUBLE(10,2)
   DETERMINISTIC
   BEGIN
@@ -49,7 +48,7 @@ DELIMITER //
     WHERE invests_in.user_id = input_user_id;
 
     RETURN var_total_return;
-  END //
+  END $$
 DELIMITER ;
 
 DELIMITER //
@@ -74,7 +73,6 @@ DELIMITER //
   END //
 DELIMITER ;
 
--- Views
 
 DROP VIEW IF EXISTS viewAllReturns;
 CREATE VIEW viewAllReturns AS
