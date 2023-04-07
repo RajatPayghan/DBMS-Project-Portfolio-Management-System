@@ -20,7 +20,7 @@ DELIMITER //
   DROP PROCEDURE IF EXISTS addPerformance;
   CREATE PROCEDURE addPerformance(IN in_user_id BIGINT)
   BEGIN
-    insert into portfolio_returns(user_id) 
+    insert into performance(user_id) 
     values (in_user_id);
   END //
 DELIMITER ;
@@ -60,7 +60,7 @@ DELIMITER //
     DECLARE cursor_ID BIGINT;
     DECLARE var_total_return DOUBLE(10,2);
     DECLARE done INT DEFAULT FALSE;
-    DECLARE cursor_i CURSOR FOR SELECT user_id FROM portfolio_returns;
+    DECLARE cursor_i CURSOR FOR SELECT user_id FROM performance;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
     OPEN cursor_i;
     read_loop: LOOP
@@ -68,7 +68,7 @@ DELIMITER //
       IF done THEN
         LEAVE read_loop;
       END IF;
-      UPDATE portfolio_returns SET total_return = totalReturn(cursor_ID) WHERE user_id = cursor_ID;
+      UPDATE performance SET total_return = totalReturn(cursor_ID) WHERE user_id = cursor_ID;
     END LOOP;
     CLOSE cursor_i;
   END //
