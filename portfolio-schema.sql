@@ -20,7 +20,7 @@ CREATE TABLE investment ( -- Running
   name VARCHAR(45) NOT NULL,
   type ENUM ('Equity','Currency','Commodity','Mutual Funds'),
   current_price DOUBLE(10,2) NOT NULL,
-  total_return DOUBLE (5,2),
+  total_return DOUBLE (10,2),
   annualized_return DOUBLE (5,2),
   risk_level DOUBLE (5,2),
   PRIMARY KEY  (symbol)

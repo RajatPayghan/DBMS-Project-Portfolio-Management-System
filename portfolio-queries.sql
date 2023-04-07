@@ -82,10 +82,10 @@ WHERE user_id = 1;
 
 -- Query 9
 SELECT 
+  market_data.on_date,
   investment.name,
   investment.symbol,
   investment.current_price,
-  market_data.on_date,
   market_data.open,
   market_data.close,
   market_data.high,
@@ -93,6 +93,37 @@ SELECT
 FROM investment
 INNER JOIN market_data USING(symbol)
 WHERE
-  symbol = 'bkunp' AND 
+  symbol = 'wkrpz' AND 
   on_date = '2023-04-03 '
 ;
+
+-- Query 10
+SELECT 
+  investment.type as 'Investment Type',
+  AVG(annualized_return) as 'Average Annualized Return'
+FROM investment
+GROUP BY type;
+
+-- Query 11
+SELECT
+ investment.name,
+ investment.risk_level,
+ que_risk(risk_level)
+FROM investment
+ORDER BY risk_level ASC;
+
+-- Query 12
+SELECT 
+  symbol,
+  (Invst_return) AS Total_Return,
+  CONCAT((Invst_return*100)/(Current_Pric_View*Quantity)," ","%") AS Total_Return_Percentage
+FROM viewallinvestments;
+
+SELECT 
+  symbol,
+  SUM(Invst_return) AS Total_Return
+FROM viewallinvestments
+GROUP BY symbol
+;
+
+

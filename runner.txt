@@ -1,3 +1,4 @@
 SOURCE /Users/rajatpayghan/Code/BITS Pilani CS Programs/DBMS Project/portfolio-schema.sql
 SOURCE /Users/rajatpayghan/Code/BITS Pilani CS Programs/DBMS Project/portfolio-procedures.sql
+SOURCE /Users/rajatpayghan/Code/BITS Pilani CS Programs/DBMS Project/portfolio-triggers.sql
 SOURCE /Users/rajatpayghan/Code/BITS Pilani CS Programs/DBMS Project/final-data.sql
