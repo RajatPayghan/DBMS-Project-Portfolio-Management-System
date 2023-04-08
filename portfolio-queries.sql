@@ -146,3 +146,37 @@ SELECT
 FROM financial_info
 ORDER BY date_of_data DESC
 LIMIT 1;
+
+--@block Query 16
+SELECT * FROM market_data
+WHERE symbol = 'batns'
+ORDER BY on_date DESC;
+
+
+--@block Query 17
+DELIMITER $$
+  DROP FUNCTION IF EXISTS que_17; 
+  CREATE FUNCTION que_17(input_start_date DATE, input_end_date DATE, input_symbol VARCHAR(50)) returns DOUBLE(10,2)
+  DETERMINISTIC
+  BEGIN
+    DECLARE start_price DOUBLE(10,2);
+    DECLARE end_price DOUBLE(10,2);
+    
+    SELECT high INTO start_price FROM market_data
+    WHERE symbol = input_symbol AND on_date = input_start_date;
+    
+    SELECT high INTO end_price FROM market_data
+    WHERE symbol = input_symbol AND on_date = input_end_date;
+
+    RETURN (100*(start_price-end_price))/(start_price);
+  END $$
+DELIMITER ;
+
+
+SELECT * FROM que_17(2023-04-02,2023-04-03,mpkbc);
+
+
+--@block Query 19
+SELECT * from investment
+ORDER BY risk_level AND annualized_return;
+

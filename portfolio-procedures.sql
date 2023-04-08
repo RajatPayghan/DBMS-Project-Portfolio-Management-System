@@ -51,10 +51,10 @@ DELIMITER $$
     CLOSE cursor_i;
   END$$
 DELIMITER ;
+
 --
 -- Functions
 --
-
 
 DELIMITER $$
   DROP FUNCTION IF EXISTS totalReturn; 
