@@ -62,25 +62,25 @@ CREATE TABLE financial_info( -- Running
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 */
 
--- Query 5
+--@block Query 5
 INSERT INTO investment VALUES ('INFY','Infosys Pvt Ltd','Equity',1244.76,-3.02,-20.44,-0.16);
 INSERT INTO invests_in VALUES (1,'INFY',30,200,'2023-04-10 02:22:49',20);
 
 -- To check : select * from invests_in where symbol='INFY';
 
--- Query 6
+--@block Query 6
 UPDATE invests_in
   SET quantity = 50 
   WHERE symbol = 'INFY' AND user_id = '1';
 
--- Query 7
+--@block Query 7
 DELETE FROM investment WHERE symbol = 'INFY';
 
--- Query 8
+--@block Query 8
 SELECT * from viewallinvestments
 WHERE user_id = 1;
 
--- Query 9
+--@block Query 9
 SELECT 
   market_data.on_date,
   investment.name,
@@ -97,14 +97,14 @@ WHERE
   on_date = '2023-04-03 '
 ;
 
--- Query 10
+--@block Query 10
 SELECT 
   investment.type as 'Investment Type',
   AVG(annualized_return) as 'Average Annualized Return'
 FROM investment
 GROUP BY type;
 
--- Query 11
+--@block Query 11
 SELECT
  investment.name,
  investment.risk_level,
@@ -112,7 +112,7 @@ SELECT
 FROM investment
 ORDER BY risk_level ASC;
 
--- Query 12
+--@block Query 12
 SELECT 
   symbol,
   (Invst_return) AS Total_Return,
@@ -126,4 +126,23 @@ FROM viewallinvestments
 GROUP BY symbol
 ;
 
+SELECT
+ symbol,
+ total_return
+FROM investment;
 
+--@block Query 13
+SELECT * FROM viewAllReturns WHERE user_id=1;
+
+-- Query 14
+
+
+
+
+--@block Query 15
+SELECT 
+  date_of_data as 'Most Recent Date',
+  inflation as 'Inflation Rate'
+FROM financial_info
+ORDER BY date_of_data DESC
+LIMIT 1;

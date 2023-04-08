@@ -1,3 +1,8 @@
+--
+-- Triggers
+--
+
+-- Adds a performance report for every user added
 DELIMITER //
   DROP TRIGGER IF EXISTS addPerformanceReport;
   CREATE TRIGGER addPerformanceReport
@@ -7,6 +12,26 @@ DELIMITER //
   END //
 DELIMITER ;
 
+-- Trigger to update total return of investment
+DELIMITER //
+  DROP TRIGGER IF EXISTS updateTotalReturnonUpdate;
+  CREATE TRIGGER updateTotalReturnonUpdate
+  AFTER UPDATE ON invests_in FOR EACH ROW
+  BEGIN 
+    CALL update_total_return();
+  END //
+DELIMITER ;
+
+DELIMITER //
+  DROP TRIGGER IF EXISTS updateTotalReturnOnInsert;
+  CREATE TRIGGER updateTotalReturnOnInsert
+  AFTER INSERT ON invests_in  FOR EACH ROW
+  BEGIN 
+    CALL update_total_return();
+  END //
+DELIMITER ;
+
+-- Trigger to update total Revenue
 DELIMITER //
   DROP TRIGGER IF EXISTS updateTotalRevenue;
   CREATE TRIGGER updateTotalRevenue
@@ -29,6 +54,7 @@ DELIMITER //
   END //
 DELIMITER ;
 
+-- Trigger to check if risk is negative
 DELIMITER //
   DROP TRIGGER IF EXISTS chk_risk;
   CREATE TRIGGER chk_risk
