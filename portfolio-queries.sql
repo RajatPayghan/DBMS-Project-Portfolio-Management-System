@@ -173,10 +173,37 @@ DELIMITER $$
 DELIMITER ;
 
 
-SELECT * FROM que_17(2023-04-02,2023-04-03,mpkbc);
+SELECT que_17('2023-04-02','2023-04-03','mpkbc');
+
+
+--@block Query 18
+DELIMITER $$
+  DROP FUNCTION IF EXISTS que_18; 
+  CREATE FUNCTION que_18(input_symbol VARCHAR(50)) returns DOUBLE(10,2)
+  DETERMINISTIC
+  BEGIN
+    RETURN
+    SELECT STDDEV(daily_return)
+    FROM
+    (
+      SELECT (investment.current_price-market_data.close) AS daily_return
+      FROM investment
+      INNER JOIN market_data USING(symbol)
+      WHERE symbol = input_symbol
+    )  AS daily_returns;
+  END $$
+DELIMITER ;
 
 
 --@block Query 19
 SELECT * from investment
 ORDER BY risk_level AND annualized_return;
 
+
+--@block Query 20
+SELECT 
+  investment.type as 'Investment Type',
+  SUM(invests_in.quantity) as Quantity
+FROM invests_in
+INNER JOIN investment USING(symbol)
+GROUP BY investment.type;

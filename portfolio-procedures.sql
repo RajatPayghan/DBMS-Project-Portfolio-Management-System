@@ -45,7 +45,7 @@ DELIMITER $$
         LEAVE read_loop;
       END IF;
       UPDATE investment 
-      SET total_return = totalReturnPercent(cursor_ID) 
+      SET total_return = totalReturnInvestment(cursor_ID) 
       WHERE symbol = cursor_ID;
     END LOOP;
     CLOSE cursor_i;
@@ -75,8 +75,8 @@ DELIMITER ;
 
 
 DELIMITER $$
-  DROP FUNCTION IF EXISTS totalReturnPercent; 
-  CREATE FUNCTION totalReturnPercent(input_symbol VARCHAR(50)) returns DOUBLE(10,2)
+  DROP FUNCTION IF EXISTS totalReturnInvestment; 
+  CREATE FUNCTION totalReturnInvestment(input_symbol VARCHAR(50)) returns DOUBLE(10,2)
   DETERMINISTIC
   BEGIN
     DECLARE var_total_return DOUBLE(10,2);
@@ -110,6 +110,24 @@ DELIMITER $$
   END $$
 DELIMITER ;
 
+DELIMITER $$
+  DROP FUNCTION IF EXISTS que_17; 
+  CREATE FUNCTION que_17(input_start_date DATE, input_end_date DATE, input_symbol VARCHAR(50)) returns DOUBLE(10,2)
+  DETERMINISTIC
+  BEGIN
+    DECLARE start_price DOUBLE(10,2);
+    DECLARE end_price DOUBLE(10,2);
+    
+    SELECT high INTO start_price FROM market_data
+    WHERE symbol = input_symbol AND on_date = input_start_date;
+    
+    SELECT high INTO end_price FROM market_data
+    WHERE symbol = input_symbol AND on_date = input_end_date;
+
+    RETURN (100*(start_price-end_price))/(start_price);
+  END $$
+DELIMITER ;
+
 --
 -- Views
 --
@@ -136,4 +154,5 @@ CREATE VIEW viewAllInvestments AS
   INNER JOIN investment USING (symbol)
   INNER JOIN user USING (user_id)
   ORDER BY user_id;
+
 
