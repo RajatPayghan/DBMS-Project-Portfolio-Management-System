@@ -18,7 +18,7 @@ CREATE TABLE user ( -- Running
 CREATE TABLE investment ( -- Running
   symbol VARCHAR(10) NOT NULL,
   name VARCHAR(45) NOT NULL,
-  type ENUM ('Equity','Currency','Commodity','Mutual Funds'),
+  type ENUM ('Equity','Currency','Commodity','Mutual Funds') NOT NULL,
   current_price DOUBLE(10,2) NOT NULL,
   total_return DOUBLE (10,2),
   annualized_return DOUBLE (5,2),

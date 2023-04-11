@@ -7,7 +7,7 @@
 --   3. Triggers
 --   4. Final Data
 
-
+-- Replace the below with paths from your system
 SOURCE /Users/rajatpayghan/Code/BITS Pilani CS Programs/DBMS Project/portfolio-schema.sql
 SOURCE /Users/rajatpayghan/Code/BITS Pilani CS Programs/DBMS Project/portfolio-procedures.sql
 SOURCE /Users/rajatpayghan/Code/BITS Pilani CS Programs/DBMS Project/portfolio-triggers.sql
