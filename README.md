@@ -13,8 +13,8 @@ This portfolio database management system is created by Rajat Payghan and Rudra 
 
 ## Links
 
-MySQL Relational Schema : https://drawsql.app/teams/dbs-4/diagrams/portfolio-management-system
-Documentation : https://docs.google.com/document/d/1nguZlqxUhjF8f4NbURXSPb0F0UQqwbsQMSO_wmSo2vc/edit
+- MySQL Relational Schema : https://drawsql.app/teams/dbs-4/diagrams/portfolio-management-system
+- Documentation : https://docs.google.com/document/d/1nguZlqxUhjF8f4NbURXSPb0F0UQqwbsQMSO_wmSo2vc/edit
 
 
 
