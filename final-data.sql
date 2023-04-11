@@ -34,5 +34,6 @@ INSERT INTO `market_data` VALUES ('batns','2023-03-28',313.97,8.74,890.92,879.21
 UPDATE investment SET current_price = current_price;
 UPDATE investment SET annualized_return = -(annualized_return);
 UPDATE investment SET risk_level = (risk_level)/10;
+UPDATE invests_in SET quantity = quantity;
 CALL update_total_return();
 

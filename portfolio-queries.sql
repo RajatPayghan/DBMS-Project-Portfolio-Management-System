@@ -115,12 +115,6 @@ ORDER BY risk_level ASC;
 --@block Query 12
 SELECT 
   symbol,
-  (Invst_return) AS Total_Return,
-  CONCAT((Invst_return*100)/(Current_Pric_View*Quantity)," ","%") AS Total_Return_Percentage
-FROM viewallinvestments;
-
-SELECT 
-  symbol,
   SUM(Invst_return) AS Total_Return
 FROM viewallinvestments
 GROUP BY symbol
@@ -132,7 +126,11 @@ SELECT
 FROM investment;
 
 --@block Query 13
-SELECT * FROM viewAllReturns WHERE user_id=1;
+SELECT SUM(percent_weight*annualized_return)/100 as 'Percent Annualized Return'
+FROM investment
+INNER JOIN invests_in USING (symbol)
+WHERE user_id=1
+GROUP BY user_id;
 
 -- Query 14
 
@@ -197,7 +195,7 @@ DELIMITER ;
 
 --@block Query 19
 SELECT * from investment
-ORDER BY risk_level AND annualized_return;
+ORDER BY annualized_return/risk_level DESC;
 
 
 --@block Query 20
