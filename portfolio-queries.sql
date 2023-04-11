@@ -175,22 +175,10 @@ SELECT que_17('2023-04-02','2023-04-03','mpkbc');
 
 
 --@block Query 18
-DELIMITER $$
-  DROP FUNCTION IF EXISTS que_18; 
-  CREATE FUNCTION que_18(input_symbol VARCHAR(50)) returns DOUBLE(10,2)
-  DETERMINISTIC
-  BEGIN
-    RETURN
-    SELECT STDDEV(daily_return)
-    FROM
-    (
-      SELECT (investment.current_price-market_data.close) AS daily_return
-      FROM investment
-      INNER JOIN market_data USING(symbol)
-      WHERE symbol = input_symbol
-    )  AS daily_returns;
-  END $$
-DELIMITER ;
+SELECT STDDEV(close)/100 as Volatility
+from market_data
+where symbol = 'batns'
+GROUP BY symbol;
 
 
 --@block Query 19
