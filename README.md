@@ -1,5 +1,5 @@
 # DBMS-Project-Portfolio-Management-System
-This portfolio database management system is created by Rajat Payghan and Rudra Goyal for our DBMS project in BITS Pilani for the Spring'23 Semester.
+This portfolio database management system is created by Rajat Payghan for my DBMS project in BITS Pilani for the Spring'23 Semester.
 
 ## How to run :
 1. Open the file `runner.txt'
